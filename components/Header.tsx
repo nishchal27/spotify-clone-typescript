@@ -9,6 +9,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FaUserAlt } from "react-icons/fa";
 
 import Button from "./Button";
+import { toast } from "react-hot-toast";
 
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
@@ -31,7 +32,9 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     router.refresh();
 
     if (error) {
-      console.log(error);
+      toast.error(error.message);
+    }else {
+      toast.success('Logged Out!')
     }
   }
   return (
@@ -63,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <div className="flex gap-x-4 items-center">
               <Button className="bg-white px-6 py-2" onClick={handleLogout}>Logout</Button>
               <Button className="bg-white" onClick={() => router.push('/account')}>
-              <FaUserAlt/>
+                <FaUserAlt />
               </Button>
             </div>
           ) : (
