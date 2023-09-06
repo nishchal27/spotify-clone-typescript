@@ -1,8 +1,16 @@
+import getSongs from "@/actions/getSongs";
 import Header from "@/components/Header"
 import ListItems from '@/components/ListItems'
 import Image from 'next/image'
+import PageContent from "./components/PageContent";
 
-export default function Home() {
+//this page will not be cashed and the data on this page
+//will always be upto date.
+export const revalidate = 0;
+
+export default async function Home() {
+  const songs = await getSongs();
+
   return (
     //updates
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
@@ -19,8 +27,9 @@ export default function Home() {
           <h1 className="text-white font-semibold text-2xl">Newest Songs</h1>
         </div>
         <div>
-          List Of Songs!
+          {songs.map((song) => <div>{song.title}</div>)}
         </div>
+        <PageContent songs={songs} />
       </div>
     </div>
   )
