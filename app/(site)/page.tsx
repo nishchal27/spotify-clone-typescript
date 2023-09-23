@@ -1,7 +1,6 @@
 import getSongs from "@/actions/getSongs";
-import Header from "@/components/Header"
-import ListItems from '@/components/ListItems'
-import Image from 'next/image'
+import Header from "@/components/Header";
+import ListItems from "@/components/ListItems";
 import PageContent from "./components/PageContent";
 
 //this page will not be cashed and the data on this page
@@ -18,7 +17,11 @@ export default async function Home() {
         <div className="mb-2">
           <h1 className="text-white text-3xl font-semibold">Welcome back</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4">
-            <ListItems image="/images/liked.png" name="Liked Songs" href='liked' />
+            <ListItems
+              image="/images/liked.png"
+              name="Liked Songs"
+              href="liked"
+            />
           </div>
         </div>
       </Header>
@@ -26,11 +29,8 @@ export default async function Home() {
         <div className="flex justify-between items-center">
           <h1 className="text-white font-semibold text-2xl">Newest Songs</h1>
         </div>
-        <div>
-          {songs.map((song) => <div>{song.title}</div>)}
-        </div>
         <PageContent songs={songs} />
       </div>
     </div>
-  )
+  );
 }

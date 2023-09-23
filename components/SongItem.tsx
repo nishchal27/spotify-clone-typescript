@@ -14,7 +14,6 @@ interface SongItemProps {
 
 const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
     const imagePath = useLoadImage(data);
-    console.log("imagepath:", imagePath)
     return (
         <div onClick={() => onClick(data.id)} className="
         relative group flex flex-col items-center justify-center rounded-md
