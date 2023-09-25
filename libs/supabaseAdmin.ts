@@ -111,6 +111,7 @@ const manageSubscriptionStatusChange = async (
         .single();
     if (noCustomerError) throw noCustomerError;
 
+    //extracting customer's UUID
     const { id: uuid } = customerData!;
 
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
