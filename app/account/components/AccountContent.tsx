@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import {toast} from "react-hot-toast";
 
 import { useUser } from "@/hooks/useUser";
 import Button from "@/components/Button";
@@ -29,7 +30,7 @@ const AccountContent = () => {
       });
       window.location.assign(url);
     } catch (error) {
-      if (error) return alert((error as Error).message);
+      if (error) return toast((error as Error).message);
     }
     setLoading(false);
   };
